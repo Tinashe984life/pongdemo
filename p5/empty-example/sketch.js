@@ -4,7 +4,8 @@ let y = 460
 let a = 40
 let b = 40
 
-let ballSpeed = 2
+let xballSpeed = 2
+let yballSpeed = 4
 
 function setup() {
   // put setup code here
@@ -20,6 +21,7 @@ function draw() {
 
   moveBall()
   checkBounce()
+  checkWallBounce()
   
   if (keyIsDown(LEFT_ARROW)){
 
@@ -47,15 +49,28 @@ function draw() {
 }
 
 function moveBall(){
-  a = a + ballSpeed
-  b = b + ballSpeed
+  a = a + xballSpeed 
+  b = b + yballSpeed
 }
 
 function checkBounce(){
-  if (b+20 === y){
-    ballSpeed = -1
+  if (b+20 === y && x<= a && a <= x+80){
+    
+    yballSpeed = yballSpeed * -1
+    
+    
   }
 }
+
+function checkWallBounce(){
+  if (a > width || a < 0){
+    xballSpeed = xballSpeed * -1
+  }
+  if (b > height || b < 0){
+    yballSpeed = yballSpeed * -1
+  }
+}
+
 
 /*function keyPressed(){
   if (keyCode === LEFT_ARROW){
