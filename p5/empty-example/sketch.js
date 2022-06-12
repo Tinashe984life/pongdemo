@@ -1,27 +1,39 @@
-let x = 40
+let x = 180
 let y = 460
 
-let a = 40
+let a;
 let b = 40
 
 let xballSpeed = 2
 let yballSpeed = 4
+let xSpeed = 4
+
+let score = document.getElementById('score')
+let scoreCount;
+
 
 function setup() {
   // put setup code here
   createCanvas(500, 500)
+  a = random(40, 460)
+  scoreCount = 0
+  
+  
 }
 
 function draw() {
   // put drawing code here
   background(70)
-
+  
+  
+  //scoreCount = 0
   rect(x, y, 80, 30)
   ellipse(a, b, 40)
 
   moveBall()
   checkBounce()
   checkWallBounce()
+  
   
   if (keyIsDown(LEFT_ARROW)){
 
@@ -30,7 +42,7 @@ function draw() {
     }
 
     else{
-      x = x - 4
+      x = x - xSpeed
     }
   }
 
@@ -41,7 +53,7 @@ function draw() {
     }
 
     else{
-      x = x + 4
+      x = x + xSpeed
     }
   }
 
@@ -57,7 +69,8 @@ function checkBounce(){
   if (b+20 === y && x<= a && a <= x+80){
     
     yballSpeed = yballSpeed * -1
-    
+    incrementScore()
+    score.innerText = scoreCount
     
   }
 }
@@ -66,15 +79,18 @@ function checkWallBounce(){
   if (a > width || a < 0){
     xballSpeed = xballSpeed * -1
   }
-  if (b > height || b < 0){
+  if (b < 0){
     yballSpeed = yballSpeed * -1
+  }
+  if (b > height){
+    yballSpeed = 0
+    xballSpeed = 0
   }
 }
 
-
-/*function keyPressed(){
-  if (keyCode === LEFT_ARROW){
-    
-    
-  }
-}*/
+function incrementScore(){
+  scoreCount += 10;
+  yballSpeed = yballSpeed * 1.08
+  xSpeed = xSpeed * 1.04
+  xballSpeed = xballSpeed * 1.025
+}
