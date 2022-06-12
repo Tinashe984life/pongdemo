@@ -37,7 +37,7 @@ function draw() {
   
   if (keyIsDown(LEFT_ARROW)){
 
-    if (x === 0){
+    if (x < 1){
       x = 0
     }
 
@@ -48,7 +48,7 @@ function draw() {
 
   if (keyIsDown(RIGHT_ARROW)){
 
-    if (x === 420){
+    if (x > 419){
       x = 420
     }
 
@@ -90,7 +90,7 @@ function checkWallBounce(){
 
 function incrementScore(){
   scoreCount += 10;
-  yballSpeed = yballSpeed * 1.08
-  xSpeed = xSpeed * 1.04
-  xballSpeed = xballSpeed * 1.025
+  yballSpeed = yballSpeed * 1.045
+  xSpeed = xSpeed * 1.025
+  xballSpeed = xballSpeed * 1.035
 }
