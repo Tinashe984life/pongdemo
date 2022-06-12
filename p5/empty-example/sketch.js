@@ -66,7 +66,7 @@ function moveBall(){
 }
 
 function checkBounce(){
-  if (b+20 === y && x<= a && a <= x+80){
+  if (b+20 === y && x-30<= a && a <= x+100){
     
     yballSpeed = yballSpeed * -1
     incrementScore()
