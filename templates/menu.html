@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="menu-container">
+        <div class="logo">
+            <h2>PONG 2k22!!</h2><small>by Tinashe Madanire</small>
+        </div>
+        <div class="levels">
+            <ul>
+                <li>
+                    <a href="{{ url_for('level1') }}">
+                        <button>Easy</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('level2') }}">
+                        <button>Intense</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <button>Hardcore</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
