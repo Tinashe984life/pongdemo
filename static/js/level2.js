@@ -34,7 +34,7 @@ function draw() {
   //scoreCount = 0
   
   rect(x, y, 80, 30)
-  square(o, p, 80)
+  rect(o, p, 80, 40)
   ellipse(a, b, 40)
   
 
@@ -109,15 +109,19 @@ function checkObjectHit(){
      
     //weird but cool glitch
 
-    if (b+21>100 && a > o && a < o+80){
+    /*if (b+21>100 && a > o && a < o+80){
         yballSpeed = yballSpeed*-1
-    }
+    }*/
     
     // working object bounce mechanic
 
-    /*if (b+21>100 && b+21 < 110 && a > o && a < o+80){
+    if (b+21>100 && b+21 < 110 && a > o && a < o+80){
         yballSpeed = yballSpeed*-1
-    }*/
+    }
+
+    if (b<160 && b > 150 && a > o && a < o+80){
+        yballSpeed = yballSpeed*-1
+    }
 }
 
 function incrementScore(){
