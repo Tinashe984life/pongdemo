@@ -1,7 +1,7 @@
 let x = 180
 let y = 460
 
-let o = 40
+let o = 300
 let p = 100
 
 let a;
@@ -18,6 +18,8 @@ let scoreCount;
 function setup() {
   // put setup code here
   createCanvas(500, 500)
+  
+
   a = random(40, 460)
   scoreCount = 0
   
@@ -32,13 +34,14 @@ function draw() {
   //scoreCount = 0
   
   rect(x, y, 80, 30)
-  rect(o, p, 80, 30)
+  square(o, p, 80)
   ellipse(a, b, 40)
   
 
   moveBall()
   checkBounce()
   checkWallBounce()
+  checkObjectHit()
   
   
   
@@ -79,10 +82,8 @@ function checkBounce(){
     yballSpeed = yballSpeed * -1
     incrementScore()
     score.innerText = scoreCount
-    
+    //console.log('kk')
   }
-  
-  
   
 }
 
@@ -97,18 +98,26 @@ function checkWallBounce(){
     yballSpeed = 0
     xballSpeed = 0
   }
-  if (b-30 === p && o <= a && a <= o+80){
-    console.log('MET1')
-    yballSpeed = yballSpeed * -1
-  }
-
-  if (b === p+30 && a >= o && a <= o+80){
-      console.log('MET2')
-    yballSpeed = yballSpeed * -1
-  } 
+  
   
 
   
+}
+
+
+function checkObjectHit(){
+     
+    //weird but cool glitch
+
+    if (b+21>100 && a > o && a < o+80){
+        yballSpeed = yballSpeed*-1
+    }
+    
+    // working object bounce mechanic
+
+    /*if (b+21>100 && b+21 < 110 && a > o && a < o+80){
+        yballSpeed = yballSpeed*-1
+    }*/
 }
 
 function incrementScore(){
