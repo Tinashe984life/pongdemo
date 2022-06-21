@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block scr %}
+    <script defer src="{{ url_for('static', filename='js/level3.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="score-container">
+        <h3>Score:<span id="score">0</span></h3>
+    </div>
+{% endblock %}

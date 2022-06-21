@@ -14,6 +14,9 @@ let xballSpeed = 2
 let yballSpeed = 4
 let xSpeed = 4
 
+let oSpeed = 2
+let qSpeed = 2
+
 let score = document.getElementById('score')
 let scoreCount;
 
@@ -38,17 +41,17 @@ function draw() {
   
   rect(x, y, 80, 30)
   rect(o, p, 80, 40)
-  rect(q, r, 60, 40)
+  rect(q, r, 80, 40)
   ellipse(a, b, 40)
   
 
   moveBall()
   checkBounce()
   checkWallBounce()
+  moveObjects()
   checkObjectHit()
   
-  
-  
+
   if (keyIsDown(LEFT_ARROW)){
 
     if (x < 1){
@@ -135,6 +138,20 @@ function checkObjectHit(){
         yballSpeed = yballSpeed*-1
     }
 }
+
+function moveObjects(){
+    
+    o = o - oSpeed
+    q = q + qSpeed
+
+    if (o < 0 || o+80 > width){
+        oSpeed = oSpeed*-1
+    }
+    if (q < 0 || q+80 > width){
+        qSpeed = qSpeed*-1
+    }
+}
+
 
 function incrementScore(){
   scoreCount += 10;

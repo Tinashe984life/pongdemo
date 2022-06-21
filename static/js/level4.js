@@ -7,12 +7,21 @@ let p = 100
 let q = 80
 let r = 100
 
-let a;
+let a
 let b = 40
+
+let c
+let d = 40
+
 
 let xballSpeed = 2
 let yballSpeed = 4
+let cballSpeed = 2
+let dballSpeed = 4
 let xSpeed = 4
+
+let oSpeed = 2
+let qSpeed = 2
 
 let score = document.getElementById('score')
 let scoreCount;
@@ -24,6 +33,7 @@ function setup() {
   
 
   a = random(40, 460)
+  c = random(40, 460)
   scoreCount = 0
   
   
@@ -37,18 +47,19 @@ function draw() {
   //scoreCount = 0
   
   rect(x, y, 80, 30)
-  rect(o, p, 80, 40)
-  rect(q, r, 60, 40)
+  //rect(o, p, 80, 40)
+  //rect(q, r, 80, 40)
   ellipse(a, b, 40)
+  ellipse(c,d, 40)
   
 
   moveBall()
   checkBounce()
   checkWallBounce()
-  checkObjectHit()
+  //moveObjects()
+  //checkObjectHit()
   
-  
-  
+
   if (keyIsDown(LEFT_ARROW)){
 
     if (x < 1){
@@ -77,16 +88,25 @@ function draw() {
 function moveBall(){
   a = a + xballSpeed 
   b = b + yballSpeed
-  
+  setInterval(()=>{
+    moveBall2()
+  }, 1000)
 }
 
 function checkBounce(){
   if (b+20 === y && x-30<= a && a <= x+100){
     
     yballSpeed = yballSpeed * -1
-    incrementScore()
+    incrementAScore()
     score.innerText = scoreCount
-    //console.log('kk')
+    
+  }
+  if (d+20 === y && x-30<= c && c <= x+100){
+    
+    dballSpeed = dballSpeed * -1
+    incrementBScore()
+    score.innerText = scoreCount
+    
   }
   
 }
@@ -102,6 +122,17 @@ function checkWallBounce(){
     yballSpeed = 0
     xballSpeed = 0
   }
+
+  if (c > width || c < 0){
+      cballSpeed = cballSpeed * -1
+  }
+  if (d < 0){
+      dballSpeed = dballSpeed * -1
+  }
+  if (d > height){
+    dballSpeed = 0
+    cballSpeed = 0
+  }
   
   
 
@@ -109,7 +140,7 @@ function checkWallBounce(){
 }
 
 
-function checkObjectHit(){
+//function checkObjectHit(){
      
     //weird but cool glitch
 
@@ -119,7 +150,7 @@ function checkObjectHit(){
     
     // working object bounce mechanic
 
-    if (b+21>100 && b+21 < 110 && a > o && a < o+80){
+/*    if (b+21>100 && b+21 < 110 && a > o && a < o+80){
         yballSpeed = yballSpeed*-1
     }
 
@@ -134,11 +165,40 @@ function checkObjectHit(){
     if (b<160 && b > 150 && a > q && a < q+60){
         yballSpeed = yballSpeed*-1
     }
+}*/
+
+/*function moveObjects(){
+    
+    o = o - oSpeed
+    q = q + qSpeed
+
+    if (o < 0 || o+80 > width){
+        oSpeed = oSpeed*-1
+    }
+    if (q < 0 || q+80 > width){
+        qSpeed = qSpeed*-1
+    }
+}*/
+
+
+function incrementAScore(){
+  scoreCount += 5;
+  yballSpeed = yballSpeed * 1.045
+  xballSpeed = xballSpeed * 1.035
+  xSpeed = xSpeed * 1.0125
+  
 }
 
-function incrementScore(){
-  scoreCount += 10;
-  yballSpeed = yballSpeed * 1.045
-  xSpeed = xSpeed * 1.025
-  xballSpeed = xballSpeed * 1.035
+function incrementBScore(){
+    scoreCount += 5;
+    
+    cballSpeed = cballSpeed * 1.035
+    dballSpeed = dballSpeed * 1.045
+    xSpeed = xSpeed * 1.0125
+    
+  }
+
+function moveBall2(){
+    c = c + cballSpeed 
+    d = d + dballSpeed
 }
