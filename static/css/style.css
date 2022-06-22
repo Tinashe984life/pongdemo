@@ -26,5 +26,15 @@
 
 .intense:hover{
     padding: 8px;
-    background-color: rgba(230, 200, 0, 0.8);
+    background-color: rgba(245, 177, 30, 0.8);
+}
+
+.hardcore:hover{
+    padding: 8px;
+    background-color: rgba(250, 0, 10, 0.8);
+}
+
+.emh:hover{
+    padding: 8px;
+    background-color: black;
 }
