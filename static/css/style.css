@@ -1,0 +1,30 @@
+.menu-container{
+    text-align: center;
+}
+
+.levels ul li{
+    list-style: none;
+}
+.levels{
+    position: relative;
+    right: 20px;
+}
+
+.levels ul li button{
+    padding: 5px;
+    background-color: rgba(40, 0, 250, 0.7);
+    color: white;
+    font-weight: bold;
+    border-radius: 6%;
+    transition: ease-in-out 200ms;
+}
+
+.easy:hover{
+    padding: 8px;
+    background-color: green;
+}
+
+.intense:hover{
+    padding: 8px;
+    background-color: rgba(230, 200, 0, 0.8);
+}

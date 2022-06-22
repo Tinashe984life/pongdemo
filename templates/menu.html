@@ -3,25 +3,28 @@
 {% block content %}
     <div class="menu-container">
         <div class="logo">
-            <h2>PONG 2k22!!</h2><small>by Tinashe Madanire</small>
+            <h1>PONG 2k22!!</h1><small>by Tinashe Madanire</small>
         </div>
         <div class="levels">
             <ul>
                 <li>
                     <a href="{{ url_for('level1') }}">
-                        <button>Easy</button>
+                        <button class="easy">Easy</button>
                     </a>
                 </li>
+                <br>
                 <li>
                     <a href="{{ url_for('level2') }}">
-                        <button>Intense</button>
+                        <button class="intense">Intense</button>
                     </a>
                 </li>
+                <br>
                 <li>
                     <a href="{{ url_for('level3') }}">
-                        <button>Hardcore</button>
+                        <button class="hardcore">Hardcore</button>
                     </a>
                 </li>
+                <br>
                 <li>
                     <a href="{{ url_for('level4') }}">
                         <button>Even More Hardcore</button>

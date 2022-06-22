@@ -56,6 +56,10 @@ function draw() {
   moveBall()
   checkBounce()
   checkWallBounce()
+
+  setInterval(()=>{
+    moveBall2()
+  }, 1000)
   //moveObjects()
   //checkObjectHit()
   
@@ -88,9 +92,7 @@ function draw() {
 function moveBall(){
   a = a + xballSpeed 
   b = b + yballSpeed
-  setInterval(()=>{
-    moveBall2()
-  }, 1000)
+  
 }
 
 function checkBounce(){
