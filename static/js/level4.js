@@ -1,3 +1,5 @@
+let msg = document.getElementById('message')
+
 let x = 180
 let y = 460
 
@@ -16,8 +18,8 @@ let d = 40
 
 let xballSpeed = 2
 let yballSpeed = 4
-let cballSpeed = 2
-let dballSpeed = 4
+let cballSpeed = 1
+let dballSpeed = 2
 let xSpeed = 4
 
 let oSpeed = 2
@@ -95,6 +97,7 @@ function moveBall(){
   b = b + yballSpeed
   c = c + cballSpeed 
   d = d + dballSpeed 
+  console.log('moving ball');
 }
 
 function checkBounce(){
@@ -125,6 +128,9 @@ function checkWallBounce(){
   if (b > height){
     yballSpeed = 0
     xballSpeed = 0
+    dballSpeed = 0
+    cballSpeed = 0
+    msg.innerText = 'YOU LOSE!!'
   }
 
   if (c > width || c < 0){
@@ -136,6 +142,9 @@ function checkWallBounce(){
   if (d > height){
     dballSpeed = 0
     cballSpeed = 0
+    yballSpeed = 0
+    xballSpeed = 0
+    msg.innerText = 'YOU LOSE!!'
   }
   
   
@@ -187,8 +196,8 @@ function checkWallBounce(){
 
 function incrementAScore(){
   scoreCount += 5;
-  yballSpeed = yballSpeed * 1.045
-  xballSpeed = xballSpeed * 1.035
+  yballSpeed = yballSpeed * 1.020
+  xballSpeed = xballSpeed * 1.015
   xSpeed = xSpeed * 1.0125
   
 }
@@ -196,8 +205,8 @@ function incrementAScore(){
 function incrementBScore(){
     scoreCount += 5;
     
-    cballSpeed = cballSpeed * 1.035
-    dballSpeed = dballSpeed * 1.045
+    cballSpeed = cballSpeed * 1.030
+    dballSpeed = dballSpeed * 1.040
     xSpeed = xSpeed * 1.0125
     
   }

@@ -1,3 +1,5 @@
+let msg = document.getElementById('message')
+
 let x = 180
 let y = 460
 
@@ -104,6 +106,7 @@ function checkWallBounce(){
   if (b > height){
     yballSpeed = 0
     xballSpeed = 0
+    msg.innerText = 'YOU LOSE!!'
   }
   
   
