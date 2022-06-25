@@ -66,3 +66,12 @@
     background-color: black;
     cursor: pointer;
 }
+
+.message{
+    position: absolute;
+    text-align: center;
+    margin-top: 150px;
+    margin-left: 190px;
+    color: white;
+    font-weight: bold;
+}
