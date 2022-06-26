@@ -75,3 +75,19 @@
     color: white;
     font-weight: bold;
 }
+
+#pnts{
+    display: none;
+}
+
+.highscore{
+    position: absolute;
+    display: none;
+    top: 100px;
+    width: 500px;
+    text-align: center;
+}
+
+.hs2{
+    display: block;
+}

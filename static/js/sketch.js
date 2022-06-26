@@ -1,5 +1,6 @@
 let msg = document.getElementById('message')
 let pnts = document.getElementById('pnts')
+const hs = document.getElementById('highscore')
 
 let x = 180
 let y = 460
@@ -90,6 +91,7 @@ function checkWallBounce(){
     xballSpeed = 0
     msg.innerText = 'YOU LOSE!!'
     pnts.value = scoreCount
+    hs.classList.add('hs2')
   }
 }
 
