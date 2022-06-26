@@ -15,6 +15,9 @@ class Players(db.Model):
     score = db.Column(db.Integer, nullable=False)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
 
+    def __repr__(self):
+        return f"Players('{self.name}', '{self.score}', '{self.date_added}')"
+
 @app.route('/')
 def home():
     return render_template('menu.html')
@@ -23,7 +26,7 @@ def home():
 def level1():
     if request.method == 'POST':
         player = Players(name=request.form['name'], score=request.form['pnts'])
-        
+        db.session.add(player)
     return render_template('level1.html')
 
 @app.route('/level2')
