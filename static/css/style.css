@@ -91,3 +91,16 @@
 .hs2{
     display: block;
 }
+
+.scores{
+    position: absolute;
+    width: 100px;
+    left: 600px;
+    text-align: center;
+}
+
+.scores table tr th{
+    width: 80px;
+    padding-right: 40px;
+    background-color: rgb(29, 85, 122);
+}
