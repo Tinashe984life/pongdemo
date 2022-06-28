@@ -25,6 +25,7 @@ def home():
 @app.route('/level1', methods=['GET', 'POST'])
 def level1():
     scores = Players.query.all()
+     
     if request.method == 'POST':
         player = Players(name=request.form['name'], score=request.form['pnts'])
         db.session.add(player)
