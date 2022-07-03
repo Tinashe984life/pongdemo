@@ -1,4 +1,8 @@
 let msg = document.getElementById('message')
+let pnts = document.getElementById('pnts')
+const hs = document.getElementById('highscore')
+
+let currentHighScore = 300;
 
 let x = 180
 let y = 460
@@ -104,6 +108,11 @@ function checkWallBounce(){
     yballSpeed = 0
     xballSpeed = 0
     msg.innerText = 'YOU LOSE!!'
+    pnts.value = scoreCount
+
+    if (scoreCount > currentHighScore){
+      hs.classList.add('hs2')
+    }
   }
   
   
