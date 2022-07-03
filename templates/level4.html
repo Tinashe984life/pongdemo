@@ -12,5 +12,32 @@
         </a>
     </div>
     <div class="message" id="message"></div>
+    <div>
+        <form method="post" class="highscore" id="highscore">
+            <h4>High Score !!</h4>
+            <input type="text" name="name" placeholder="Enter Your Name">
+            <input type="text" name="pnts" id="pnts">
+            <input type="submit" name="submit" value="Submit">
+        </form>
+    </div>
+    <div class="scores">
+        <h3>HighScores</h3>
+        <table>
+            
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+                {% for score in scores %}
+                    <tr>
+                        <td>{{ score.name }}</td>
+                        <td>{{ score.score }}</td>
+                    </tr>
+                {% endfor %}
+            
+        </table>
+            
+        
+    </div>
     
 {% endblock %}

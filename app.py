@@ -1,3 +1,4 @@
+#from crypt import methods
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -21,6 +22,27 @@ class Players(db.Model):
 
 # database for level 2
 class Players2(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(6), nullable=False)
+    score = db.Column(db.Integer, nullable=False)
+    date_added = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"{self.name} _______________ {self.score}"
+
+
+# database for level 3 
+class Players3(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(6), nullable=False)
+    score = db.Column(db.Integer, nullable=False)
+    date_added = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"{self.name} _______________ {self.score}"
+
+
+class Players4(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(6), nullable=False)
     score = db.Column(db.Integer, nullable=False)
@@ -53,13 +75,25 @@ def level2():
         db.session.commit()
     return render_template('level2.html', scores=scores)
 
-@app.route('/level3')
+@app.route('/level3', methods=['GET', 'POST'])
 def level3():
-    return render_template('level3.html')
+    scores = Players3.query.all()
+     
+    if request.method == 'POST':
+        player = Players3(name=request.form['name'], score=request.form['pnts'])
+        db.session.add(player)
+        db.session.commit()
+    return render_template('level3.html', scores=scores)
 
-@app.route('/level4')
+@app.route('/level4', methods=['GET', 'POST'])
 def level4():
-    return render_template('level4.html')
+    scores = Players4.query.all()
+     
+    if request.method == 'POST':
+        player = Players4(name=request.form['name'], score=request.form['pnts'])
+        db.session.add(player)
+        db.session.commit()
+    return render_template('level4.html', scores=scores)
 
 if __name__ == "__main__":
     app.run(debug=True)
