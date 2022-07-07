@@ -1,4 +1,5 @@
 #from crypt import methods
+from audioop import reverse
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -58,7 +59,7 @@ def home():
 @app.route('/level1', methods=['GET', 'POST'])
 def level1():
     scores = Players.query.all()
-     
+    scores.sort(key=lambda x: x.score, reverse=True)
     if request.method == 'POST':
         player = Players(name=request.form['name'], score=request.form['pnts'])
         db.session.add(player)
@@ -68,7 +69,7 @@ def level1():
 @app.route('/level2', methods=['GET', 'POST'])
 def level2():
     scores = Players2.query.all()
-     
+    scores.sort(key=lambda x: x.score, reverse=True) 
     if request.method == 'POST':
         player = Players2(name=request.form['name'], score=request.form['pnts'])
         db.session.add(player)
@@ -78,7 +79,7 @@ def level2():
 @app.route('/level3', methods=['GET', 'POST'])
 def level3():
     scores = Players3.query.all()
-     
+    scores.sort(key=lambda x: x.score, reverse=True)
     if request.method == 'POST':
         player = Players3(name=request.form['name'], score=request.form['pnts'])
         db.session.add(player)
@@ -88,7 +89,7 @@ def level3():
 @app.route('/level4', methods=['GET', 'POST'])
 def level4():
     scores = Players4.query.all()
-     
+    scores.sort(key=lambda x: x.score, reverse=True)
     if request.method == 'POST':
         player = Players4(name=request.form['name'], score=request.form['pnts'])
         db.session.add(player)
